@@ -1,0 +1,38 @@
+{% extends 'myapplication/base.html' %}
+{% block content %}
+    {% if object_applicant and object_personal_skills %}
+        <div class="container_white">
+            <div>
+                <h3>Selbstbeschreibung</h3>
+                <p>{{ object_applicant.selbstbeschreibung }}</p>
+            </div>
+            <br>
+            <div>
+                <h3>Besonderes</h3>
+                <p>{{ object_applicant.besonderes }}</p>
+            </div>
+            <br>
+            <div>
+                <h3>Intension</h3>
+                <p>{{ object_applicant.intension }}</p>
+            </div>
+            <br>
+            <div>
+                <h3>Fähigkeiten</h3>
+                <table border="1">
+                    <tr>
+                        <th>Persönliche Fähigkeit</th>
+                        <th>Beschreibung</th>
+                    </tr>
+                    {% for skill in object_personal_skills %}
+                        <tr>
+                            <td>{{ skill.bezeichnung }}</td>
+                            <td>{{ skill.beschreibungstext }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="footer_bar"></div>
+    {% endif %}
+{% endblock %}

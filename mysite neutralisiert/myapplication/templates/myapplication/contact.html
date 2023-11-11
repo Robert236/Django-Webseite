@@ -1,0 +1,20 @@
+{% extends 'myapplication/base.html' %}
+{% block content %}
+<br>
+<div class="container">
+    <form action="{% url 'myapplication:contact' %}" method="post">
+        {% csrf_token %}
+        <label for="titel_field">Titel</label>
+        <input type="text" id="titel_field" name="titel" placeholder="Bitte eine Eingabe" required />
+        <label for="message_field">Nachricht</label>
+        <textarea id="message_field" name="nachricht" placeholder="Bitte eine Eingabe" style="height:200px"
+                  maxlength="999"></textarea>
+        <input type="submit" value="Senden">
+    </form>
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+</div>
+<br>
+<div class="footer_bar"></div>
+{% endblock %}

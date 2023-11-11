@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'myapplication/style.css' %}">
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <div class="navbar">
+        <a href="{% url 'myapplication:index' %}">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Bewerbungsunterlagen
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="{% url 'myapplication:document' document='Anschreiben' %}">Anschreiben</a>
+                <a href="{% url 'myapplication:document' document='Lebenslauf' %}">Lebenslauf</a>
+                <a href="{% url 'myapplication:document' document='Bachelorzeugnis' %}">Bachelorabschluss</a>
+                <a href="{% url 'myapplication:document' document='Arbeitszeugnis' %}">Arbeitszeugnisse</a>
+                <a href="{% url 'myapplication:document' document='Praktikumszeugnis' %}">Praktikumszeugnisse</a>
+                <a href="{% url 'myapplication:document' document='IHK-Zeugnis' %}">IHK-Abschlusszeugnis</a>
+                <a href="{% url 'myapplication:document' document='Schulzeugnis' %}">Schulzeugnisse</a>
+                <a href="{% url 'myapplication:document' document='Urkunde' %}">Urkunden</a>
+                <a href="{% url 'myapplication:application_documents' %}">alle Unterlagen</a>
+            </div>
+        </div>
+        <a href="{% url 'myapplication:jobs' %}">Arbeitsprobe</a>
+        <a href="{% url 'myapplication:skills' %}">Kenntnisse</a>
+        <a href="{% url 'myapplication:contact' %}">Kontakt</a>
+        <span><a href="{% url 'myapplication:logout_user' %}">Logout, als {{ request.user }}</a></span>
+    </div>
+    {% block content %}
+
+    {% endblock %}
+    <footer style="text-align: center;">
+        <p>License: <a href="https://creativecommons.org/licenses/by-nd/2.0/" target="_blank">
+            CC BY-ND 2.0</a> by Robert Vater (2021)</p>
+    </footer>
+</body>
+</html>

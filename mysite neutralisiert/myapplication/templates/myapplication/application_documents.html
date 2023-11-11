@@ -1,0 +1,19 @@
+{% extends 'myapplication/base.html' %}
+{% block content %}
+    {% if all_documents %}
+        <div class="container_class">
+            <div class="column">
+                <p><b>Überblick zu den verfügbaren Dokumenten</b></p>
+                <ol>
+                    {% for document in all_documents %}
+                        <li><a href="#">{{ document.name }}
+                        </a></li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+        <div class="footer_bar"></div>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+{% endblock %}

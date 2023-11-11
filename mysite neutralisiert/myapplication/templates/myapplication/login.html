@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'myapplication/style_login.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <div class="login">
+        <div class="form">
+            <form class="registration-form" action="{% url 'myapplication:register_user' %}" method="post">
+                {% csrf_token %}
+                <select name="anrede">
+                    <option value="Herr">Herr</option>
+                    <option value="Frau">Frau</option>
+                </select>
+                <input type="text" placeholder="Vorname" name="vorname" required/>
+                <input type="text" placeholder="Nachname" name="nachname" required/>
+                <input type="text" placeholder="Benutzername" name="benutzername" required/>
+                <input type="email" placeholder="E-mail" name="email" required/>
+                <input type="text" placeholder="Unternehmen" name="unternehmen" required/>
+                <input type="text" placeholder="PLZ" name="plz" required/>
+                <input type="text" placeholder="Ort" name="ort" required/>
+                <button>Registrieren</button>
+                <p class="alternate"><a href="#">Log In</a></p>
+            </form>
+            <form class="login-form" action="{% url 'myapplication:login_page' %}" method="post">
+                {% csrf_token %}
+                <input type="text" placeholder="Benutzername" name="benutzername" required/>
+                <input type="password" placeholder="Passwort" name="passwort" required/>
+                <button>Log In</button>
+                <p class="alternate"><a href="#">Registrieren</a></p>
+            </form>
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    <script>
+        $('.alternate').click(function () {
+            $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
+        });
+    </script>
+</body>
+</html>

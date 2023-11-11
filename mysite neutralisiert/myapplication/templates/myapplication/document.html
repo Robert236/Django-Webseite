@@ -1,0 +1,24 @@
+{% extends 'myapplication/base.html' %}
+{% block content %}
+    {% if current_documents %}
+        {% for doc in current_documents %}
+            <div style="display: table; width: 100%; table-layout: fixed; border-spacing: 20px; text-align: center;">
+                <div style="display: table-cell;"><p class="main_header"><b>{{ doc.name }}</b></p></div>
+                <div style="display: table-cell;"><p>Ausstellungsdatum: {{ doc.erstellungsdatum }}</p></div>
+                <div style="display: table-cell;"><a href="{{ doc.dokument.url }}" target="_blank"><i>als PDF laden</i>
+                </a></div>
+            </div>
+            <br>
+            {% if doc.name == "gesamter Bachelorabschluss" %}
+                <p hidden>Hier git es kein Bild</p>
+            {% else %}
+                <div style="margin: auto; width: 70%; padding: 10px; border: 1px solid #C0C0C0;">
+                    <img src="{{ doc.foto.url }}" alt="doku" width="900" height="1300">
+                </div>
+            {% endif %}
+            <br>
+            <br>
+            <div class="footer_bar"></div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

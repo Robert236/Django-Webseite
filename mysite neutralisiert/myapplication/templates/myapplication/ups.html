@@ -1,0 +1,10 @@
+{% extends 'myapplication/base.html' %}
+{% block content %}
+    <div style="text-align: center;">
+        <h1>Ups!</h1>
+        <p>Es sind keine Dokumente angelegt.</p>
+        <a href="{% url 'myapplication:index' %}"> Zurück zur Startseite</a>
+    </div>
+    <br>
+    <div class="footer_bar"></div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'myapplication/base.html' %}
+{% block content %}
+    {% if applicant_object %}
+        <div class="main_header">
+            <h2>Willkommen auf meinem Bewerberprofil</h2>
+        </div>
+        <div class="container_class">
+            <div class="column" style="text-align: center;">
+                <img src="{{ applicant_object.foto.url }}" alt="bewerberbild" width="310" height="450">
+            </div>
+            <div class="column">
+                <p><b>Kontaktdaten</b></p>
+                <p>Name: {{ applicant_object.anrede }} {{ applicant_object.vorname }} {{ applicant_object.nachname }}</p>
+                <p>Straße: {{ applicant_object.strasse }}</p>
+                <p>PLZ: {{ applicant_object.plz }}</p>
+                <p>Ort: {{ applicant_object.ort }}</p>
+                <p>E-Mail: {{ applicant_object.email }}</p>
+                <p>Mobile: {{ applicant_object.handy }}</p>
+            </div>
+            <div class="column">
+                <div>
+                    <p><b>Selbstbeschreiben</b></p>
+                    <p>{{ applicant_object.short_selbstbeschreibung }} <a href="{% url 'myapplication:skills' %}">Mehr
+                    </a></p>
+                </div>
+                <div>
+                    <p><b>Besonderes</b></p>
+                    <p>{{ applicant_object.short_besonderes }} <a href="{% url 'myapplication:skills' %}">Mehr</a></p>
+                </div>
+                <div>
+                    <p><b>Intension</b></p>
+                    <p>{{ applicant_object.short_intension }} <a href="{% url 'myapplication:skills' %}">Mehr</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="footer_bar"></div>
+    {% endif %}
+{% endblock %}
